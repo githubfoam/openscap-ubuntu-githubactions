@@ -43,9 +43,6 @@ jobs:
         # https://www.open-scap.org/tools/openscap-base/#download
         # oscap tool from OpenSCAP Base        
         sudo apt-get install libopenscap8  -yq
-        # Linux, default policies are provided by SCAP Security Guide (SSG)
-        # this package should already be installed on your system
-        ls -lai /usr/share/scap-security-guide
         # https://www.open-scap.org/security-policies/scap-security-guide/#install
         sudo apt-get install ssg-base ssg-debderived ssg-debian ssg-nondebian ssg-applications -yq
         ls -lai /usr/share/scap-security-guide
