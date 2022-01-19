@@ -49,4 +49,5 @@ jobs:
         # ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml
         # https://www.open-scap.org/security-policies/scap-security-guide/#install
         sudo apt-get install ssg-base ssg-debderived ssg-debian ssg-nondebian ssg-applications -yq
-        ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml
+        ls -1 /usr/share
+        # ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml
