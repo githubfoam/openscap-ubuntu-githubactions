@@ -45,9 +45,7 @@ jobs:
         sudo apt-get install libopenscap8  -yq
         # Linux, default policies are provided by SCAP Security Guide (SSG)
         # this package should already be installed on your system
-        # ls: cannot access '/usr/share/xml/scap/ssg/content/ssg-*-ds.xml': No such file or directory
-        # ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml
+        ls -lai /usr/share/scap-security-guide
         # https://www.open-scap.org/security-policies/scap-security-guide/#install
         sudo apt-get install ssg-base ssg-debderived ssg-debian ssg-nondebian ssg-applications -yq
-        ls -1 /usr/share
-        # ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml
+        ls -lai /usr/share/scap-security-guide
