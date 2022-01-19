@@ -1,0 +1,47 @@
+name: "ubuntu 2004 OpenSCAP CI workflow"
+
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+      - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month  
+
+
+jobs:
+
+       
+  ubuntu-2004-job:
+    name: "OpenSCAP on ubuntu-20.04"
+    runs-on: ubuntu-20.04
+    env:
+      distribution: "ubuntu"
+      version: "focal"   
+    steps:
+    - uses: actions/checkout@v2
+    - name: "os fingerprinting"
+      run: hostnamectl status  
+    - name: "Run OpenSCAP audit"
+      run: |
+        #install apache2
+        sudo apt-get update -yq
+        sudo apt-get install apache2 -yq
+        # sudo systemctl is-enabled apache2.service
+        # sudo systemctl status apache2.service
+        #install openscap
+        sudo apt-get update -yq
+        sudo apt-get install libopenscap8 wget  -yq
+        # download the necessary OVAL definitions
+        if wget --spider https://people.canonical.com/~ubuntu-security/oval/com.ubuntu.${version}.cve.oval.xml 2>/dev/null; then
+          echo "OVAL file exists"
+        else
+          echo "OVAL file does not exist"
+        fi        
+        wget https://people.canonical.com/~ubuntu-security/oval/com.ubuntu.${version}.cve.oval.xml
+        # Run the audit 
+        # https://wiki.ubuntu.com/Releases
+        oscap oval eval --results /tmp/${version}_oscap_results.xml --report /tmp/${version}_oscap_report.html com.ubuntu.${version}.cve.oval.xml
+        sudo cp /tmp/${version}_oscap_report.html /var/www/html/
+        # browse http://SERVER_IP/${version}_oscap_report.html        
+
+ 
