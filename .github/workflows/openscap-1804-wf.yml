@@ -45,6 +45,6 @@ jobs:
         sudo apt-get install libopenscap8  -yq
         # https://www.open-scap.org/security-policies/scap-security-guide/#install
         sudo apt-get install ssg-base ssg-debderived ssg-debian ssg-nondebian ssg-applications -yq
-        ls -lai /usr/share/scap-security-guide/ssg-ubuntu*-oval.xml
-        oscap info /usr/share/xml/scap/ssg/content/ssg-ubuntu1604-ds.xml
+        ls -lai /usr/share/scap-security-guide/ssg-ubuntu*-ds.xml
+        sudo oscap info /usr/share/xml/scap/ssg/content/ssg-ubuntu1604-ds.xml
 
