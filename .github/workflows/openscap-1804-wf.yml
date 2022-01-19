@@ -39,5 +39,13 @@ jobs:
     - name: "Run OpenSCAP audit"
       run: |
         sudo apt-get update -yq
-        sudo apt-get install openscap-scanner  -yq
+        # https://www.open-scap.org/getting-started/
+        # https://www.open-scap.org/tools/openscap-base/#download
+        # oscap tool from OpenSCAP Base        
+        sudo apt-get install libopenscap8  -yq
+        # Linux, default policies are provided by SCAP Security Guide (SSG)
+        # this package should already be installed on your system
+        ls -1 /usr/share/xml/scap/ssg/content/ssg-*-ds.xml
+        # https://www.open-scap.org/security-policies/scap-security-guide/#install
+        # sudo apt-get install ssg-base ssg-debderived ssg-debian ssg-nondebian ssg-applications -yq
     
