@@ -15,7 +15,8 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       distribution: "ubuntu"
-      version: "bionic"   
+      code_name: "bionic" 
+      version: "18.04"   
     steps:
     - uses: actions/checkout@v2
     - name: "os fingerprinting"
@@ -58,4 +59,11 @@ jobs:
         ./build_product ubuntu1804
         ls -lai build
         oscap info build/ssg-ubuntu1804-ds.xml
-
+        #CIS Ubuntu 18.04 LTS Benchmark
+        mkdir -p /tmp/${distribution}/${version}/profile_cis && cd /tmp/${distribution}/${version}/profile_cis
+        oscap xccdf eval \
+          --profile xccdf_org.ssgproject.content_profile_ci \
+          --results-arf arf.xml \
+          --report report.html \
+          build/ssg-ubuntu1804-ds.xml
+          ls -lai 
