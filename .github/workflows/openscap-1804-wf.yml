@@ -53,10 +53,9 @@ jobs:
       run: |
         sudo apt-get update -yq        
         sudo apt-get install cmake make expat libopenscap8 libxml2-utils ninja-build python3-jinja2 python3-yaml xsltproc -yq
-        # pulling the latest OpenSCAP security guide from github to get the latest scans
+        # building the latest OpenSCAP security guide from github to get the latest scans
         git clone https://github.com/ComplianceAsCode/content.git && cd content
-        # git clone https://github.com/ComplianceAsCode/content.git 
-        ls -lai
         ./build_product ubuntu1804
         ls -lai build
+        oscap info build/ssg-ubuntu1804-ds.xml
 
