@@ -58,4 +58,5 @@ jobs:
         # git clone https://github.com/ComplianceAsCode/content.git 
         ls -lai
         ./build_product ubuntu1804
+        ls -lai content/build
 
