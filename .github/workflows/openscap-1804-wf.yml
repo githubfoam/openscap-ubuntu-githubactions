@@ -65,5 +65,5 @@ jobs:
           --profile xccdf_org.ssgproject.content_profile_cis \
           --results-arf arf.xml \
           --report report.html \
-          build/ssg-ubuntu1804-ds.xml
+          build/ssg-ubuntu1804-ds.xml 2>/dev/null
           ls -lai 
